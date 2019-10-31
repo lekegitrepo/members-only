@@ -1,13 +1,11 @@
 class SessionsController < ApplicationController
   def new
-  	@session = ""
+    session[:user_id] = ''
   end
 
   def create
-    @session = ""
   end
 
   def destroy
-
   end
 end
