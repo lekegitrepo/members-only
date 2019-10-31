@@ -1,6 +1,6 @@
 module SessionsHelper
 
   def log_in
-    session[]
+    session[:user_id]
   end
 end

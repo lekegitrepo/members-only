@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
   def new
-  	log_in
+  	session[:user] = Session.new
   end
 end
