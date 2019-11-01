@@ -21,4 +21,12 @@ class ApplicationController < ActionController::Base
       @current_user ||= user if user &.authenticated?(cookies[:remember_token])
     end
   end
+
+  def sign_out
+    session.delete(:user_id)
+    user.update_attribute(:remember_digest, nil)
+    @current_user = nil
+    cookies.delete(:remember_token)
+    cookies.delete(:user_id)
+  end
 end
