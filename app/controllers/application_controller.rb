@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def sign_out
+  def sign_out(user)
     session.delete(:user_id)
     user.update_attribute(:remember_digest, nil)
     @current_user = nil

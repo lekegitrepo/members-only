@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2019_11_01_172014) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "remember_token"
     t.string "auth_token"
     t.string "remember_digest"
     t.index ["auth_token"], name: "index_users_on_auth_token", unique: true

@@ -15,6 +15,11 @@ class SessionsController < ApplicationController
     end
   end
 
+  def delete
+    sign_out current_user
+    redirect_to login_path
+  end
+
   def destroy
   end
 end
