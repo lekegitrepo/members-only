@@ -12,5 +12,5 @@ class User < ApplicationRecord
     Digest::SHA1.hexdigest token
   end
 
-  has_secure_password
+  has_secure_token :auth_token
 end
