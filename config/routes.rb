@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  #get 'sessions/new'
+  post 'sessions/new'
 
   resources :users
   resources :posts
