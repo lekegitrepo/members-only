@@ -8,15 +8,6 @@ class User < ApplicationRecord
     BCrypt::Password.create(string, cost: cost)
   end
 
-  def self.digest(string)
-    if ActiveModel::SecurePassword.min_cost
-      cost = BCrypt::Engine::MIN_COST
-    else
-      cost = BCrypt::Engine.cost
-    end
-    BCrypt::Password.create(string, cost: cost)
-  end
-
   def self.create_token
     SecureRandom.urlsafe_base64
   end

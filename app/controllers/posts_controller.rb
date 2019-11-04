@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :logged_in?, only: %i[new create]
@@ -38,14 +40,6 @@ class PostsController < ApplicationController
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
-
-    #
-    #if @post.save
-    #  flash.now[:success] = 'Post was successfully created.'
-    #  redirect_to posts_path
-    #else
-    #  render :new
-    #end
   end
 
   # PATCH/PUT /posts/1
