@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_01_220208) do
+ActiveRecord::Schema.define(version: 2019_11_04_160133) do
+
+  create_table "blogs", force: :cascade do |t|
+    t.string "title"
+    t.string "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string "title"
@@ -27,7 +34,6 @@ ActiveRecord::Schema.define(version: 2019_11_01_220208) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "remember_token"
     t.string "auth_token"
     t.string "remember_digest"
     t.index ["auth_token"], name: "index_users_on_auth_token", unique: true

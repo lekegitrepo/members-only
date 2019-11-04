@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :logged_in?, only: %i[new create]
 
   # GET /posts
@@ -26,12 +27,24 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user = current_user
+    
+    respond_to do |format|
       if @post.save
-        flash.now[:success] = 'Post was successfully created.'
-        redirect_to posts_path
+        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.json { render :show, status: :created, location: @post }
       else
-        render :new
+        format.html { render :new }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
       end
+    end
+
+    #
+    #if @post.save
+    #  flash.now[:success] = 'Post was successfully created.'
+    #  redirect_to posts_path
+    #else
+    #  render :new
+    #end
   end
 
   # PATCH/PUT /posts/1
@@ -66,6 +79,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :body)
+      params.require(:post).permit(:title, :body, :user_id)
     end
 end

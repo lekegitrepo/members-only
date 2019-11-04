@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
-  #post 'sessions/new'
+  root 'posts#index'
+
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#delete'
-  get 'posts', to: 'posts#index'
+
+  #get 'posts', to: 'posts#index'
+  #post 'sessions/new'
 
   resources :users
-  resources :posts, only: %i[new create index]
+  resources :posts
   resources :sessions
 end
