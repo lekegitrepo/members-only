@@ -32,11 +32,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-<% if current_user %>
-  <%= link_to 'New Post', new_post_path %>
-  <%= link_to 'Sign out', logout_path, method: :delete %>
-<% else %>
-  <%= link_to 'Log In', login_path %>
-<% end %>
